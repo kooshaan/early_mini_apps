@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.nokiatest.movieApp.screens.detailsScreen.DetailsScreen
 import com.example.nokiatest.movieApp.screens.homeScreen.HomeScreen
+import com.example.nokiatest.movieApp.screens.moreDetailsScreen.MoreDetailsScreen
 
 @Composable
 fun MovieNavigation(){
@@ -28,6 +29,17 @@ fun MovieNavigation(){
             backStackEntry ->
             DetailsScreen(navController = navigationController,
                 backStackEntry.arguments?.getString("movie"))
+        }
+
+        composable(
+            route = MovieScreens.MoreDetailsScreen.name + "/{movie",
+            arguments = listOf(navArgument(name = "movie"){type = NavType.StringType})
+        ){
+            backStackEntry ->
+            MoreDetailsScreen(
+                navController = navigationController,
+                backStackEntry.arguments?.getString("movie")
+                )
         }
     }
 

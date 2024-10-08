@@ -87,7 +87,7 @@ fun MainContent(navController: NavController,
                         .padding(vertical = 4.dp)
                         .clip(RoundedCornerShape(CornerSize(8.dp)))
 
-                ) {
+                ){
                     MovieRow(movie = it) { movie ->
                         navController
                             .navigate(MovieScreens.DetailsScreen.name + "/$movie")
