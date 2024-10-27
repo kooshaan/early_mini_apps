@@ -15,12 +15,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -50,6 +51,8 @@ import androidx.navigation.NavController
 import com.example.nokiatest.JetTipApp.R
 import com.example.nokiatest.movieApp.model.Movie
 import com.example.nokiatest.movieApp.model.getMovies
+import com.example.nokiatest.movieApp.navigation.MovieScreens
+import com.example.nokiatest.movieApp.widgets.HorizontalBigDivider
 import com.example.nokiatest.movieApp.widgets.ScrollableMovieGallery
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -82,18 +85,29 @@ fun DetailsScreen(navController: NavController, movieID: String?) {
                     modifier = Modifier
                         .fillMaxWidth(),
                     navigationIcon = {
-                        Surface(color = Color.Transparent) {
-                            Icon(imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                contentDescription = "back button",
-                                modifier = Modifier
-                                    .clickable { navController.popBackStack() }
-                                    .size(35.dp)
-                                    .border(
-                                        3.dp,
-                                        Color.DarkGray,
-                                        shape = RoundedCornerShape(size = 15.dp)
-                                    )
-                            )
+                        Row {
+                            Surface(color = Color.Transparent) {
+                                Icon(imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                                    contentDescription = "back button",
+                                    modifier = Modifier
+                                        .clickable { navController.popBackStack() }
+                                        .size(35.dp)
+                                        .border(
+                                            3.dp,
+                                            Color.DarkGray,
+                                            shape = RoundedCornerShape(size = 15.dp)
+                                        )
+                                )
+                            }
+                            Spacer(modifier = Modifier.width(100.dp))
+
+                            Surface(color = Color.Transparent) {
+                                Icon(imageVector = Icons.Default.MoreVert,
+                                    contentDescription = "More-Details_Screen entry",
+                                    modifier = Modifier
+                                        .size(35.dp)
+                                        .clickable { navController.navigate(route = MovieScreens.MoreDetailsScreen.name + "/${theMovie.id}") })
+                            }
                         }
                     },
                     colors = TopAppBarDefaults
@@ -202,16 +216,4 @@ fun DetailsScreen(navController: NavController, movieID: String?) {
             }
         }
     }
-}
-
-@Composable
-private fun HorizontalBigDivider() {
-    HorizontalDivider(
-        modifier = Modifier
-            .padding(vertical = 8.dp, horizontal = 8.dp)
-            .fillMaxWidth(),
-        thickness = 2.5.dp,
-        color = Color
-            (red = 196, green = 196, blue = 196, alpha = 158)
-    )
 }

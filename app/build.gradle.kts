@@ -66,6 +66,8 @@ dependencies {
     androidTestImplementation(libs.androidx.navigation.testing)
     //Coil library
     implementation(libs.coil.compose)
+    //Cloudy for blurring images and etc
+    implementation(libs.cloudy)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

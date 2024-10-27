@@ -32,9 +32,9 @@ val myList = listOf(
                 "and learn to fight as a team if they are to stop " +
                 "the mischievous Loki and his alien army from enslaving humanity.",
         "Joss Whedon",
-        "English, Russian",
+        "En, Rus",
         "USA",
-        "Nominated for 1 Oscar. Another 34 wins & 75 nominations.",
+        "Nom. for 1 Oscar. Another 34 wins & 75 nominations.",
         "69",
         "8.1",
         "1,003,301",
@@ -45,7 +45,8 @@ val myList = listOf(
             "https://images-na.ssl-images-amazon.com/images/M/MV5BMjE1MzEzMjcyM15BMl5BanBnXkFtZTcwNDM4ODY3Nw@@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
             "https://images-na.ssl-images-amazon.com/images/M/MV5BMjMwMzM2MTg1M15BMl5BanBnXkFtZTcwNjM4ODY3Nw@@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
             "https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ4NzM2Mjc5MV5BMl5BanBnXkFtZTcwMTkwOTY3Nw@@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
-            "https://images-na.ssl-images-amazon.com/images/M/MV5BMTc3MzQ3NjA5N15BMl5BanBnXkFtZTcwMzY5OTY3Nw@@._V1_SX1777_CR0,0,1777,999_AL_.jpg"
+            "https://images-na.ssl-images-amazon.com/images/M/MV5BMTc3MzQ3NjA5N15BMl5BanBnXkFtZTcwMzY5OTY3Nw@@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfr8q20wC4e5UFojVrQCs_8tlfJ49o3RxF6lzSku8Y0X-vPELrtKEyLOXQP1W_yI0LJDg&usqp=CAU"
         )),
     Movie(
         "1",
@@ -58,9 +59,9 @@ val myList = listOf(
         "A team of explorers travel through a wormhole" +
                 " in space in an attempt to ensure humanity's survival.",
         "Christopher Nolan",
-        "English",
+        "En",
         "USA, UK",
-        "Won 1 Oscar. Another 39 wins & 134 nominations.",
+        "1 Oscar. Another 39 wins & 134 nominations.",
         "74",
         "8.6",
         "937,412",
@@ -71,7 +72,9 @@ val myList = listOf(
             "https://images-na.ssl-images-amazon.com/images/M/MV5BMzQ5ODE2MzEwM15BMl5BanBnXkFtZTgwMTMyODgxMzE@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
             "https://images-na.ssl-images-amazon.com/images/M/MV5BMTg4Njk4MzY0Nl5BMl5BanBnXkFtZTgwMzIyODgxMzE@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
             "https://images-na.ssl-images-amazon.com/images/M/MV5BMzE3MTM0MTc3Ml5BMl5BanBnXkFtZTgwMDIyODgxMzE@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
-            "https://images-na.ssl-images-amazon.com/images/M/MV5BNjYzNjE2NDk3N15BMl5BanBnXkFtZTgwNzEyODgxMzE@._V1_SX1500_CR0,0,1500,999_AL_.jpg"
+            "https://images-na.ssl-images-amazon.com/images/M/MV5BNjYzNjE2NDk3N15BMl5BanBnXkFtZTgwNzEyODgxMzE@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
+            "https://qph.cf2.quoracdn.net/main-qimg-58efec61c180d2acaaa7d240a0734e22-lq"
+
         )),
     Movie(
         "2",
@@ -84,9 +87,9 @@ val myList = listOf(
         "The story behind Detective James Gordon's rise to" +
                 " prominence in Gotham City in the years before Batman's arrival.",
         "N/A",
-        "English",
+        "En",
         "USA",
-        "Nominated for 4 Primetime Emmys. Another 3 wins & 22 nominations.",
+        "4 nom. for Primetime Emmys. Another 3 wins & 22 nominations.",
         "N/A",
         "8.0",
         "133,375",
@@ -97,7 +100,8 @@ val myList = listOf(
             "https://images-na.ssl-images-amazon.com/images/M/MV5BMjA5OTExMTIwNF5BMl5BanBnXkFtZTgwMjI5NDMwMDI@._V1_SY1000_SX1500_AL_.jpg",
             "https://images-na.ssl-images-amazon.com/images/M/MV5BMTA3MDY2NjA3MzBeQTJeQWpwZ15BbWU4MDU0MDkzODgx._V1_SX1499_CR0,0,1499,999_AL_.jpg",
             "https://images-na.ssl-images-amazon.com/images/M/MV5BMjM3MzYzNDgzOV5BMl5BanBnXkFtZTgwMjQwOTM4ODE@._V1_SY1000_CR0,0,1498,1000_AL_.jpg",
-            "https://images-na.ssl-images-amazon.com/images/M/MV5BMjQwODAyNjk0NF5BMl5BanBnXkFtZTgwODU4MzMyODE@._V1_SY1000_CR0,0,1500,1000_AL_.jpg"
+            "https://images-na.ssl-images-amazon.com/images/M/MV5BMjQwODAyNjk0NF5BMl5BanBnXkFtZTgwODU4MzMyODE@._V1_SY1000_CR0,0,1500,1000_AL_.jpg",
+            "https://info-world-hub.com/wp-content/uploads/2021/02/07b4e5c803b5bbbcae06e7029e7bbe52.jpg"
         )),
     Movie(
         "3",
@@ -111,9 +115,9 @@ val myList = listOf(
                 " turns to manufacturing and selling methamphetamine in order to" +
                 " secure his family's financial future.",
         "N/A",
-        "English, Spanish",
+        "En, Spa",
         "USA",
-        "Won 2 Golden Globes. Another 132 wins & 218 nominations.",
+        "2 Golden Globes. Another 132 wins & 218 nominations.",
         "N/A",
         "9.5",
         "889,883",
@@ -124,7 +128,8 @@ val myList = listOf(
             "https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ2NDkwNDk5NV5BMl5BanBnXkFtZTgwNDM0MTI2MDE@._V1_SY1000_CR0,0,1495,1000_AL_.jpg",
             "https://images-na.ssl-images-amazon.com/images/M/MV5BMTM4NDcyNDMzMF5BMl5BanBnXkFtZTgwOTI0MTI2MDE@._V1_SY1000_CR0,0,1495,1000_AL_.jpg",
             "https://images-na.ssl-images-amazon.com/images/M/MV5BMTAzMTczMjM3NjFeQTJeQWpwZ15BbWU4MDc1MTI1MzAx._V1_SY1000_CR0,0,1495,1000_AL_.jpg",
-            "https://images-na.ssl-images-amazon.com/images/M/MV5BMjA5MTE3MTgwMF5BMl5BanBnXkFtZTgwOTQxMjUzMDE@._V1_SX1500_CR0,0,1500,999_AL_.jpg"
+            "https://images-na.ssl-images-amazon.com/images/M/MV5BMjA5MTE3MTgwMF5BMl5BanBnXkFtZTgwOTQxMjUzMDE@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
+            "https://i.redd.it/02lv2hmxh0751.jpg"
         )
     ),
     Movie(
@@ -140,9 +145,9 @@ val myList = listOf(
                 " Meanwhile a forgotten race, bent on destruction, plans to return after" +
                 " thousands of years in the North.",
         "N/A",
-        "English",
+        "En",
         "USA, UK",
-        "Won 1 Golden Globe. Another 185 wins & 334 nominations.",
+        "1 Golden Globe. Another 185 wins & 334 nominations.",
         "N/A",
         "9.5",
         "1,046,830",
@@ -153,7 +158,8 @@ val myList = listOf(
             "https://images-na.ssl-images-amazon.com/images/M/MV5BZjZkN2M5ODgtMjQ2OC00ZjAxLWE1MjMtZDE0OTNmNGM0NWEwXkEyXkFqcGdeQXVyNjUxNzgwNTE@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
             "https://images-na.ssl-images-amazon.com/images/M/MV5BMDk4Y2Y1MDAtNGVmMC00ZTlhLTlmMmQtYjcyN2VkNzUzZjg2XkEyXkFqcGdeQXVyNjUxNzgwNTE@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
             "https://images-na.ssl-images-amazon.com/images/M/MV5BNjZjNWIzMzQtZWZjYy00ZTkwLWJiMTYtOWRkZDBhNWJhY2JmXkEyXkFqcGdeQXVyMjk3NTUyOTc@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
-            "https://images-na.ssl-images-amazon.com/images/M/MV5BNTMyMTRjZWEtM2UxMS00ZjU5LWIxMTYtZDA5YmJhZmRjYTc4XkEyXkFqcGdeQXVyMjk3NTUyOTc@._V1_SX1777_CR0,0,1777,999_AL_.jpg"
+            "https://images-na.ssl-images-amazon.com/images/M/MV5BNTMyMTRjZWEtM2UxMS00ZjU5LWIxMTYtZDA5YmJhZmRjYTc4XkEyXkFqcGdeQXVyMjk3NTUyOTc@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYT_U-hRmmACHHALx6lfOOTCZcVCGBND7lfw&s"
         )),
     Movie(
         "5",
@@ -167,9 +173,9 @@ val myList = listOf(
                 "the moon Pandora on a unique mission becomes torn between following his orders " +
                 "and protecting the world he feels is his home.",
         "James Cameron",
-        "English, Spanish",
+        "En, Spa",
         "USA, UK",
-        "Won 3 Oscars. Another 80 wins & 121 nominations.",
+        "3 Oscars. Another 80 wins & 121 nominations.",
         "83",
         "7.9",
         "890,617",
@@ -180,7 +186,8 @@ val myList = listOf(
             "https://images-na.ssl-images-amazon.com/images/M/MV5BNzM2MDk3MTcyMV5BMl5BanBnXkFtZTcwNjg0MTUzNA@@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
             "https://images-na.ssl-images-amazon.com/images/M/MV5BMTY2ODQ3NjMyMl5BMl5BanBnXkFtZTcwODg0MTUzNA@@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
             "https://images-na.ssl-images-amazon.com/images/M/MV5BMTMxOTEwNDcxN15BMl5BanBnXkFtZTcwOTg0MTUzNA@@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
-            "https://images-na.ssl-images-amazon.com/images/M/MV5BMTYxMDg1Nzk1MV5BMl5BanBnXkFtZTcwMDk0MTUzNA@@._V1_SX1500_CR0,0,1500,999_AL_.jpg"
+            "https://images-na.ssl-images-amazon.com/images/M/MV5BMTYxMDg1Nzk1MV5BMl5BanBnXkFtZTcwMDk0MTUzNA@@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
+            "https://static.wikia.nocookie.net/movie-heroes-and-villains/images/e/e8/Jake_Sully.png/revision/latest?cb=20230819025438"
         ))
 )
 
