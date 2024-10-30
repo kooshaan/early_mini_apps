@@ -1,4 +1,4 @@
-package com.example.nokiatest.jetTipApp
+package com.example.nokiatest.jettipapp
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions

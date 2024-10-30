@@ -1,4 +1,4 @@
-package com.example.nokiatest.jetTipApp
+package com.example.nokiatest.jettipapp
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -14,9 +14,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
@@ -131,7 +133,9 @@ fun BillForm(
         border = BorderStroke(width = 1.dp, color = Color.LightGray)
     ) {
         Column(
-            modifier = Modifier.padding(6.dp),
+            modifier = Modifier
+                .padding(6.dp)
+                .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.Start
         ) {

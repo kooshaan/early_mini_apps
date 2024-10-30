@@ -1,4 +1,4 @@
-package com.example.nokiatest.movieApp.navigation
+package com.example.nokiatest.movieapp.navigation
 
 enum class MovieScreens {
     HomeScreen,

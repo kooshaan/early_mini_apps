@@ -1,4 +1,4 @@
-package com.example.nokiatest.movieApp.widgets
+package com.example.nokiatest.movieapp.widgets
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -61,8 +61,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.example.nokiatest.JetTipApp.R
-import com.example.nokiatest.movieApp.model.Movie
-import com.example.nokiatest.movieApp.model.getMovies
+import com.example.nokiatest.movieapp.model.Movie
+import com.example.nokiatest.movieapp.model.getMovies
 
 
 @Composable

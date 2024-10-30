@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package com.example.nokiatest.movieApp.screens.detailsScreen
+package com.example.nokiatest.movieapp.screens.detailsScreen
 
 import android.annotation.SuppressLint
 import android.icu.lang.UCharacter.toUpperCase
@@ -49,11 +49,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.nokiatest.JetTipApp.R
-import com.example.nokiatest.movieApp.model.Movie
-import com.example.nokiatest.movieApp.model.getMovies
-import com.example.nokiatest.movieApp.navigation.MovieScreens
-import com.example.nokiatest.movieApp.widgets.HorizontalBigDivider
-import com.example.nokiatest.movieApp.widgets.ScrollableMovieGallery
+import com.example.nokiatest.movieapp.model.Movie
+import com.example.nokiatest.movieapp.model.getMovies
+import com.example.nokiatest.movieapp.navigation.MovieScreens
+import com.example.nokiatest.movieapp.widgets.HorizontalBigDivider
+import com.example.nokiatest.movieapp.widgets.ScrollableMovieGallery
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)

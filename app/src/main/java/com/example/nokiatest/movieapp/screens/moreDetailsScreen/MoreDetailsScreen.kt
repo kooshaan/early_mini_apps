@@ -1,4 +1,4 @@
-package com.example.nokiatest.movieApp.screens.moreDetailsScreen
+package com.example.nokiatest.movieapp.screens.moreDetailsScreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -40,10 +40,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import com.example.nokiatest.JetTipApp.R
-import com.example.nokiatest.movieApp.model.Movie
-import com.example.nokiatest.movieApp.model.getMovies
-import com.example.nokiatest.movieApp.widgets.MiniIconBox
-import com.example.nokiatest.movieApp.widgets.ScrollableMovieGallery
+import com.example.nokiatest.movieapp.model.Movie
+import com.example.nokiatest.movieapp.model.getMovies
+import com.example.nokiatest.movieapp.widgets.MiniIconBox
+import com.example.nokiatest.movieapp.widgets.ScrollableMovieGallery
 import com.skydoves.cloudy.cloudy
 
 @Composable

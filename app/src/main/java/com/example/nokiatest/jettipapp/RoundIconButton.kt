@@ -1,4 +1,4 @@
-package com.example.nokiatest.jetTipApp
+package com.example.nokiatest.jettipapp
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxSize

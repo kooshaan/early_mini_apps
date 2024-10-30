@@ -1,12 +1,16 @@
-package com.example.nokiatest.jetTipApp
+package com.example.nokiatest.jettipapp
 
-fun totalTipCalculator(totalAmount: Double, tipPercent: Int ): Double{
+import androidx.annotation.VisibleForTesting
+
+@VisibleForTesting
+internal fun totalTipCalculator(totalAmount: Double, tipPercent: Int ): Double{
     return if (totalAmount > 1 && totalAmount.toString().isNotEmpty())
         totalAmount.times(tipPercent).div(100)
     else 7.7
 }
 
-fun calculateTotalPerPerson(
+@VisibleForTesting
+internal fun calculateTotalPerPerson(
     totalBill: Double,
     splitBy: Int,
     tipPercentage: Int): Double {

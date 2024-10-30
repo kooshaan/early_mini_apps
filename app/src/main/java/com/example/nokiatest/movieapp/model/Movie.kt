@@ -1,4 +1,4 @@
-package com.example.nokiatest.movieApp.model
+package com.example.nokiatest.movieapp.model
 
 data class Movie(
     val id: String,

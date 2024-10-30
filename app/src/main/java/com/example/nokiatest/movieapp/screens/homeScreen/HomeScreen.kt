@@ -2,7 +2,7 @@
     ExperimentalMaterial3Api::class
 )
 
-package com.example.nokiatest.movieApp.screens.homeScreen
+package com.example.nokiatest.movieapp.screens.homeScreen
 
 import android.annotation.SuppressLint
 import android.icu.lang.UCharacter.toUpperCase
@@ -39,10 +39,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.nokiatest.JetTipApp.R
-import com.example.nokiatest.movieApp.model.Movie
-import com.example.nokiatest.movieApp.model.getMovies
-import com.example.nokiatest.movieApp.navigation.MovieScreens
-import com.example.nokiatest.movieApp.widgets.MovieRow
+import com.example.nokiatest.movieapp.model.Movie
+import com.example.nokiatest.movieapp.model.getMovies
+import com.example.nokiatest.movieapp.navigation.MovieScreens
+import com.example.nokiatest.movieapp.widgets.MovieRow
 
 
 @OptIn(ExperimentalMaterial3Api::class)

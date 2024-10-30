@@ -1,4 +1,4 @@
-package com.example.nokiatest.movieApp.navigation
+package com.example.nokiatest.movieapp.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
@@ -6,9 +6,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.nokiatest.movieApp.screens.detailsScreen.DetailsScreen
-import com.example.nokiatest.movieApp.screens.homeScreen.HomeScreen
-import com.example.nokiatest.movieApp.screens.moreDetailsScreen.MoreDetailsScreen
+import com.example.nokiatest.movieapp.screens.detailsScreen.DetailsScreen
+import com.example.nokiatest.movieapp.screens.homeScreen.HomeScreen
+import com.example.nokiatest.movieapp.screens.moreDetailsScreen.MoreDetailsScreen
 
 @Composable
 fun MovieNavigation(){
