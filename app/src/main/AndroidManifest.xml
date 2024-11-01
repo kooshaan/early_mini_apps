@@ -15,7 +15,7 @@
         <activity
             android:exported="true"
             android:theme="@style/Theme.NokiaTest"
-            android:name="com.example.nokiatest.jettipapp.JetTipApp">
+            android:name="com.example.nokiatest.etc.ArtSpaceApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
