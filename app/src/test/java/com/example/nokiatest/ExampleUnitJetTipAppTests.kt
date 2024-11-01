@@ -5,4 +5,14 @@ package com.example.nokiatest
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-class ExampleUnitJetTipAppTests
+class ExampleUnitJetTipAppTests{
+    /*@Test
+    fun `yeah just this one`(){
+        val bill = 45.0
+        val tipPer = 50
+        val expected = 22.5
+        val actualOutput =
+            totalTipCalculator(totalAmount = bill, tipPercent = tipPer)
+        assert(expected == actualOutput)
+    }*/
+}
