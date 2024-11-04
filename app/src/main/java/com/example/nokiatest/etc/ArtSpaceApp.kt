@@ -33,6 +33,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
@@ -57,13 +58,24 @@ fun App(){
     var shownArtworkID by remember {
         mutableIntStateOf(0)
     }
-    BaseCanvas(shownID = shownArtworkID) { newVal ->
+
+
+    val artworks: MutableList<Artwork> = mutableListOf(
+        Artwork(pictureResourceID = painterResource(id = R.drawable.abstract_art),
+            artworkTitle = "a lonely window",
+            creator = "abcd",
+            dateCreated = 2011)
+    )
+    BaseCanvas(shownID = shownArtworkID,
+        artworksList = artworks
+    ) { newVal ->
         shownArtworkID = newVal
     }
 }
 
 @Composable
 fun BaseCanvas(shownID: Int,
+               artworksList: MutableList<Artwork>,
                onValChange: (Int) -> Unit){
     val bruh: Array<Pair<Float, Color>> = arrayOf(
         0.0f to Color(red = 33, green = 39, blue = 63, alpha = 255),
@@ -98,7 +110,7 @@ fun BaseCanvas(shownID: Int,
                     shadowElevation = 8.dp,
                     color = Color.Transparent
                 ) {
-                    Image(painter = painterResource(id = R.drawable.avatar),
+                    Image(painter = artworksList[shownID].pictureResourceID,
                         contentDescription = "123",
                         contentScale = ContentScale.Fit,
                         modifier = Modifier.padding(32.dp)
@@ -112,7 +124,8 @@ fun BaseCanvas(shownID: Int,
                     Column(verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally) {
 
-                        Text(text = "artwork title",
+                        Text(text = artworksList[shownID].artworkTitle,
+                            modifier = Modifier.padding(horizontal = 8.dp),
                             fontSize = 28.sp,
                             fontWeight = FontWeight.Bold,
                             color = Color.LightGray)
@@ -124,7 +137,7 @@ fun BaseCanvas(shownID: Int,
                                     fontSize = 20.sp,
                                     fontWeight = FontWeight.SemiBold
                                 )) {
-                                    append("artist name")
+                                    append(artworksList[shownID].creator)
                                 }
                             }, modifier = Modifier.padding(8.dp))
 
@@ -136,7 +149,7 @@ fun BaseCanvas(shownID: Int,
                                     fontStyle = FontStyle.Italic,
                                     shadow = Shadow(Color.DarkGray, Offset(0.05f, 0.05f))
                                 )) {
-                                    append("\tyear created")
+                                    append(artworksList[shownID].dateCreated.toString())
                                 }
                             }, modifier = Modifier.padding(8.dp))
                         }
@@ -164,7 +177,7 @@ fun BaseCanvas(shownID: Int,
                             modifier = Modifier.weight(1.0f, false),
                             colors = buttonsColor
                             ) {
-                            Text(text = "Next creation", )
+                            Text(text = "Next creation")
                         }
                     }
                 }
@@ -172,3 +185,5 @@ fun BaseCanvas(shownID: Int,
         }
     }
 }
+data class Artwork(val pictureResourceID: Painter, val artworkTitle: String,
+                   val creator: String, val dateCreated: Int)
