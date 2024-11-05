@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.example.nokiatest.movieapp.widgets
 
 import androidx.compose.animation.AnimatedVisibility
@@ -27,8 +29,11 @@ import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -38,14 +43,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.ParagraphStyle
 import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -63,10 +68,12 @@ import coil.compose.rememberAsyncImagePainter
 import com.example.nokiatest.JetTipApp.R
 import com.example.nokiatest.movieapp.model.Movie
 import com.example.nokiatest.movieapp.model.getMovies
+import com.example.nokiatest.ui.theme.Typography
 
 
 @Composable
-fun MiniIconBox( icon: Int,
+fun MiniIconBox( modifier: Modifier = Modifier,
+                 icon: Int,
                  text: String,
                  textSize: Int,
 ){
@@ -105,35 +112,24 @@ fun MiniIconBox( icon: Int,
     }
 }
 @Composable
-fun MovieRow(movie: Movie = getMovies()[0],
+fun MovieRow(modifier: Modifier = Modifier,
+             movie: Movie = getMovies()[0],
              onClick: (String) -> Unit = {}){
 
     var expanded by remember {
         mutableStateOf(false)
     }
 
-    Card(
-        modifier = with(Modifier) {
-//            wrapContentHeight()
-//            Why is still a short footage of each card still empty?
-//              animated visibility or wrap components..?
-            fillMaxWidth()
-                .paint(
-                    painter = painterResource(id = R.drawable.galaxy_background),
-                    contentScale = ContentScale.FillBounds
-                )
-                .padding(top = 6.dp, bottom = 0.dp)
-                .clickable { onClick(movie.id) }
-        },
+    Card(modifier = modifier.clickable { onClick(movie.id) },
         colors = CardDefaults.cardColors(Color.Transparent),
     ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Start
+        Row(verticalAlignment = Alignment.CenterVertically,
         ) {
             Surface(
                 modifier = Modifier
                     .padding(horizontal = 8.dp, vertical = 6.dp)
+                    .wrapContentHeight(unbounded = false)
+
 //                    .wrapContentSize(unbounded = false,
 //                        align = Alignment.Center)
                 ,
@@ -144,13 +140,14 @@ fun MovieRow(movie: Movie = getMovies()[0],
                 Image(
                     painter = rememberAsyncImagePainter(
                         model = movie.images[0],
-                        contentScale = ContentScale.Fit,
+                        contentScale = ContentScale.Crop,
                     ),
                     contentDescription = "movie main image",
                     modifier = Modifier.size(130.dp)
                 )
             }
-            Column(modifier = Modifier.padding(4.dp)) {
+            Column(modifier = Modifier.padding(4.dp)
+            ) {
                 Text(
                     text = movie.title.replaceFirst(
                         movie.title[0],
@@ -160,9 +157,9 @@ fun MovieRow(movie: Movie = getMovies()[0],
                     fontWeight = FontWeight.ExtraBold,
                     fontSize = 25.sp,
                     maxLines = 1,
-                    style = TextStyle.Default,
                     fontFamily = FontFamily.SansSerif,
-                    overflow = TextOverflow.Ellipsis
+                    overflow = TextOverflow.Ellipsis,
+                    style = MaterialTheme.typography.displayMedium
                 )
 
                 Spacer(modifier = Modifier.height(6.dp))
@@ -256,7 +253,8 @@ fun MovieRow(movie: Movie = getMovies()[0],
 }
 
 @Composable
-fun ScrollableMovieGallery(theMovie: Movie) {
+fun ScrollableMovieGallery(modifier: Modifier = Modifier,
+                           theMovie: Movie) {
 
     Surface(
         modifier = Modifier
@@ -265,7 +263,7 @@ fun ScrollableMovieGallery(theMovie: Movie) {
         shape = RoundedCornerShape(CornerSize(10.dp)),
         color = Color.Transparent,
 
-    ) {
+        ) {
         LazyRow(
             modifier = Modifier.wrapContentHeight(unbounded = true),
             verticalAlignment = Alignment.CenterVertically
@@ -274,7 +272,7 @@ fun ScrollableMovieGallery(theMovie: Movie) {
                 Surface(
                     modifier = Modifier
 //                        .fillMaxSize()
-                    .size(width = 270.dp, height = 180.dp)
+                        .size(width = 270.dp, height = 180.dp)
                         .padding(end = 5.dp),
                     shape = RoundedCornerShape(CornerSize(5.dp)),
                     color = Color.Transparent,
@@ -291,13 +289,34 @@ fun ScrollableMovieGallery(theMovie: Movie) {
     }
 }
 @Composable
-fun HorizontalBigDivider() {
+fun HorizontalBigDivider(modifier: Modifier = Modifier) {
     HorizontalDivider(
-        modifier = Modifier
+        modifier = modifier
             .padding(vertical = 8.dp, horizontal = 8.dp)
             .width(360.dp),
         thickness = 2.5.dp,
         color = Color
             (red = 196, green = 196, blue = 196, alpha = 158)
+    )
+}
+
+@Composable
+fun MovieAppTopAppBar(modifier: Modifier = Modifier){
+    CenterAlignedTopAppBar(
+        title = {
+            Row(verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center)
+            {
+                Image(painter = painterResource(id = R.drawable.film_clapperboard_icon),
+                    contentDescription = "top app bar logo",
+                    modifier = Modifier
+                        .size(dimensionResource(id = R.dimen.image_size))
+                        .padding(dimensionResource(id = R.dimen.padding_small)))
+                
+                Text(text = stringResource(id = R.string.movieApp_name),
+                    style = Typography.displayLarge)
+            }
+        },
+        modifier = modifier
     )
 }

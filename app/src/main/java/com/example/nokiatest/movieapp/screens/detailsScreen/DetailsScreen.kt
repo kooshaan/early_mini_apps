@@ -3,31 +3,19 @@
 package com.example.nokiatest.movieapp.screens.detailsScreen
 
 import android.annotation.SuppressLint
-import android.icu.lang.UCharacter.toUpperCase
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -41,9 +29,7 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextGeometricTransform
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -51,72 +37,21 @@ import androidx.navigation.NavController
 import com.example.nokiatest.JetTipApp.R
 import com.example.nokiatest.movieapp.model.Movie
 import com.example.nokiatest.movieapp.model.getMovies
-import com.example.nokiatest.movieapp.navigation.MovieScreens
 import com.example.nokiatest.movieapp.widgets.HorizontalBigDivider
+import com.example.nokiatest.movieapp.widgets.MovieAppTopAppBar
 import com.example.nokiatest.movieapp.widgets.ScrollableMovieGallery
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DetailsScreen(navController: NavController, movieID: String?) {
+fun DetailsScreen(modifier: Modifier = Modifier,
+                  navController: NavController,
+                  movieID: String? = "0") {
 
     val theMovie: Movie = getMovies().filter { it.id == movieID }[0]
 
     Scaffold(
-        topBar = {
-            Row (
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
-            ){
-
-                TopAppBar(
-                    title = {
-                        Surface(color = Color.Transparent) {
-                            Text(
-                                text = toUpperCase(theMovie.title),
-                                fontWeight = FontWeight.ExtraBold,
-                                textDecoration = TextDecoration.Underline,
-                                fontSize = 40.sp,
-                                maxLines = 1,
-                                overflow = TextOverflow.Ellipsis
-                            )
-                        }
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    navigationIcon = {
-                        Row {
-                            Surface(color = Color.Transparent) {
-                                Icon(imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                    contentDescription = "back button",
-                                    modifier = Modifier
-                                        .clickable { navController.popBackStack() }
-                                        .size(35.dp)
-                                        .border(
-                                            3.dp,
-                                            Color.DarkGray,
-                                            shape = RoundedCornerShape(size = 15.dp)
-                                        )
-                                )
-                            }
-                            Spacer(modifier = Modifier.width(100.dp))
-
-                            Surface(color = Color.Transparent) {
-                                Icon(imageVector = Icons.Default.MoreVert,
-                                    contentDescription = "More-Details_Screen entry",
-                                    modifier = Modifier
-                                        .size(35.dp)
-                                        .clickable { navController.navigate(route = MovieScreens.MoreDetailsScreen.name + "/${theMovie.id}") })
-                            }
-                        }
-                    },
-                    colors = TopAppBarDefaults
-                        .topAppBarColors(
-                            containerColor = Color.Transparent
-                        )
-                )
-            }
-        }
+        topBar = { MovieAppTopAppBar()}
     ) {
         Surface(modifier = Modifier
             .fillMaxSize()
@@ -133,7 +68,7 @@ fun DetailsScreen(navController: NavController, movieID: String?) {
 
                 Row(verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center) {
-                    ScrollableMovieGallery(theMovie)
+                    ScrollableMovieGallery(theMovie = theMovie)
                 }
 
                 HorizontalBigDivider()

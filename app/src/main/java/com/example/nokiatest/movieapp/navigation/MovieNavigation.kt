@@ -29,7 +29,7 @@ fun MovieNavigation(){
             backStackEntry ->
             DetailsScreen(
                 navController = navigationController,
-                backStackEntry.arguments?.getString("movie")
+                movieID = backStackEntry.arguments?.getString("movie")
             )
         }
 
