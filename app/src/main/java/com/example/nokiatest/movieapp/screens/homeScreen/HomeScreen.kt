@@ -1,7 +1,3 @@
-@file:OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class,
-    ExperimentalMaterial3Api::class
-)
-
 package com.example.nokiatest.movieapp.screens.homeScreen
 
 import android.annotation.SuppressLint
@@ -9,20 +5,15 @@ import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.nokiatest.JetTipApp.R
@@ -34,13 +25,12 @@ import com.example.nokiatest.movieapp.widgets.MovieRow
 import com.example.nokiatest.ui.theme.Shapes
 
 
-@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier,
                navController: NavController) {
     Scaffold(
-        topBar = { MovieAppTopAppBar() },
+        topBar = { MovieAppTopAppBar() }
     ) {
         MainContent(navController = navController)
 
@@ -60,14 +50,8 @@ fun MainContent(modifier: Modifier = Modifier,
                 shape = Shapes.medium,
                 colors = CardDefaults.cardColors(Color.Transparent)
             ) {
-                MovieRow(modifier = Modifier.then(with(Modifier) {
-                    fillMaxWidth()
-                        .paint(
-                            painter = painterResource(id = R.drawable.galaxy_background),
-                            contentScale = ContentScale.FillBounds
-                        )
-                        .padding(top = 6.dp, bottom = 0.dp)
-                }),
+                MovieRow(
+                    modifier = Modifier.fillMaxWidth(),
                     movie = it) { movieID ->
                     navController
                         .navigate(MovieScreens.MoreDetailsScreen.name + "/$movieID")

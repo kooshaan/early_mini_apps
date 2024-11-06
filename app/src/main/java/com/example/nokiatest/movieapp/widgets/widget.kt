@@ -3,10 +3,16 @@
 package com.example.nokiatest.movieapp.widgets
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.expandHorizontally
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.foundation.BorderStroke
+import androidx.compose.animation.shrinkHorizontally
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -15,6 +21,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -69,6 +76,8 @@ import com.example.nokiatest.JetTipApp.R
 import com.example.nokiatest.movieapp.model.Movie
 import com.example.nokiatest.movieapp.model.getMovies
 import com.example.nokiatest.ui.theme.Typography
+import com.example.nokiatest.ui.theme.primaryLight
+import com.example.nokiatest.ui.theme.tertiaryLight
 
 
 @Composable
@@ -120,11 +129,20 @@ fun MovieRow(modifier: Modifier = Modifier,
         mutableStateOf(false)
     }
 
+    val changedColor by animateColorAsState(
+        targetValue = if (expanded) tertiaryLight else primaryLight,
+        label = ""
+    )
+
     Card(modifier = modifier.clickable { onClick(movie.id) },
-        colors = CardDefaults.cardColors(Color.Transparent),
+        colors = CardDefaults.cardColors(changedColor)
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically,
-        ) {
+        Row(modifier = Modifier.animateContentSize(animationSpec = spring(
+            dampingRatio = Spring.DampingRatioMediumBouncy,
+            stiffness = Spring.StiffnessLow
+        )),
+            verticalAlignment = Alignment.CenterVertically,
+        ){
             Surface(
                 modifier = Modifier
                     .padding(horizontal = 8.dp, vertical = 6.dp)
@@ -134,8 +152,7 @@ fun MovieRow(modifier: Modifier = Modifier,
 //                        align = Alignment.Center)
                 ,
                 shape = CircleShape,
-                color = Color.Transparent,
-                border = BorderStroke(0.2.dp, Color.LightGray)
+                color = Color.Transparent
             ) {
                 Image(
                     painter = rememberAsyncImagePainter(
@@ -143,7 +160,7 @@ fun MovieRow(modifier: Modifier = Modifier,
                         contentScale = ContentScale.Crop,
                     ),
                     contentDescription = "movie main image",
-                    modifier = Modifier.size(130.dp)
+                    modifier = Modifier.requiredSize(140.dp)
                 )
             }
             Column(modifier = Modifier.padding(4.dp)
@@ -186,69 +203,84 @@ fun MovieRow(modifier: Modifier = Modifier,
                         .clickable { expanded = !expanded },
                     tint = Color.White
                 )
+            }
+        }
+        AnimatedVisibility(
+            visible = expanded,
+            enter = fadeIn() + expandHorizontally { 200 },
+            exit = fadeOut() + shrinkHorizontally { 200 }
+        ){
+            Column(
+                modifier = Modifier.padding(top = 4.dp, bottom = 8.dp,
+                    start = 8.dp, end = 8.dp)
+                    .background(color = changedColor),
+                verticalArrangement = Arrangement.Top,
+                horizontalAlignment = Alignment.Start
+            ) {
+                Text(buildAnnotatedString {
+                    withStyle(ParagraphStyle(
+                        textAlign = TextAlign.Start,
+                        textIndent = TextIndent(4.sp, 2.sp),
+                        lineHeight = TextUnit(4.0f, TextUnitType(8L)),
+                    ), block = {
+                        append("- " + movie.plot)
+                    })
+                },
+                    color = Color.White)
 
-                AnimatedVisibility(
-                    visible = expanded,
-                    enter = fadeIn(),
-                    exit = fadeOut()
-                ) {
-                    Column(
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.Start
-                    ) {
-                        Text(buildAnnotatedString {
-                            withStyle(ParagraphStyle(
-                                textAlign = TextAlign.Start,
-                                textIndent = TextIndent(4.sp, 2.sp),
-                                lineHeight = TextUnit(4.0f, TextUnitType(8L)),
-                            ), block = {
-                                append("- " + movie.plot)
-                            })
-                        },
-                            color = Color.White)
+                HorizontalDivider(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 8.dp),
+                    thickness = 1.4.dp,
+                    color = Color.LightGray
+                )
+                Row {
 
-                        HorizontalDivider(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(vertical = 4.dp),
-                            thickness = 1.4.dp,
-                            color = Color.LightGray
-                        )
-
-                        Text(buildAnnotatedString {
+                    Icon(painter = painterResource(id = R.drawable.country_icon),
+                        contentDescription = null,
+                        modifier = Modifier.padding(horizontal = 4.dp))
+                    Text(
+                        buildAnnotatedString {
                             withStyle(
                                 style = SpanStyle(
-                                    color = Color.White,
                                     fontSize = 15.sp,
                                     fontWeight = FontWeight.Bold,
                                     shadow = Shadow(Color.DarkGray, blurRadius = 1.0f),
-                                    textGeometricTransform = TextGeometricTransform(1.0f, 0.0f)
+                                    textGeometricTransform =
+                                    TextGeometricTransform(1.0f, 0.0f)
                                 )
                             ) {
                                 append("Country: ${movie.country}")
                             }
-                        },)
+                        },
+                    )
+                    Spacer(modifier = Modifier.weight(1f))
 
-                        Text(buildAnnotatedString {
-                            withStyle(
-                                SpanStyle(
-                                    color = Color.White,
-                                    fontSize = 15.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    shadow = Shadow(Color.DarkGray, blurRadius = 1.0f),
-                                    textGeometricTransform = TextGeometricTransform(1.1f, 0.0f),
-                                    baselineShift = BaselineShift.Subscript
-                                )
-                            ) {
-                                append("Language: ${movie.language}")
-                            }
-                        })
-                    }
+                    Icon(painter = painterResource(id = R.drawable.language_icon),
+                        contentDescription = null,
+                        modifier = Modifier.padding(horizontal = 4.dp))
+
+                    Text(buildAnnotatedString {
+                        withStyle(
+                            SpanStyle(
+                                fontSize = 15.sp,
+                                fontWeight = FontWeight.Bold,
+                                shadow = Shadow(Color.DarkGray, blurRadius = 1.0f),
+                                textGeometricTransform =
+                                TextGeometricTransform(1.1f, 0.0f),
+                                baselineShift = BaselineShift.Superscript
+                            )
+                        ) {
+                            append("Language: ${movie.language}")
+                        }
+                    })
                 }
             }
         }
 //            Modifier.offset(x = 290.dp, y = (-40).dp)
-//        changes the position of a component being shown, but not originally (like buttons!!)
+//        changes the position of a component being shown,
+    //        but not originally (like buttons!!)
     }
 }
 
@@ -281,7 +313,8 @@ fun ScrollableMovieGallery(modifier: Modifier = Modifier,
                         painter = rememberAsyncImagePainter(model = it),
                         contentDescription = "a photo of movies gallery",
                         contentScale = ContentScale.FillHeight,
-                        modifier = Modifier.wrapContentWidth(align = Alignment.CenterHorizontally, unbounded = false)
+                        modifier = Modifier.wrapContentWidth(
+                            align = Alignment.CenterHorizontally, unbounded = false)
                     )
                 }
             }
@@ -304,15 +337,14 @@ fun HorizontalBigDivider(modifier: Modifier = Modifier) {
 fun MovieAppTopAppBar(modifier: Modifier = Modifier){
     CenterAlignedTopAppBar(
         title = {
-            Row(verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center)
+            Row(verticalAlignment = Alignment.CenterVertically)
             {
                 Image(painter = painterResource(id = R.drawable.film_clapperboard_icon),
                     contentDescription = "top app bar logo",
                     modifier = Modifier
                         .size(dimensionResource(id = R.dimen.image_size))
                         .padding(dimensionResource(id = R.dimen.padding_small)))
-                
+
                 Text(text = stringResource(id = R.string.movieApp_name),
                     style = Typography.displayLarge)
             }
