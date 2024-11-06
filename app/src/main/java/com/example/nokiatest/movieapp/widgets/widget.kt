@@ -23,7 +23,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyRow
@@ -61,7 +60,6 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.BaselineShift
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextGeometricTransform
 import androidx.compose.ui.text.style.TextIndent
@@ -75,9 +73,6 @@ import coil.compose.rememberAsyncImagePainter
 import com.example.nokiatest.JetTipApp.R
 import com.example.nokiatest.movieapp.model.Movie
 import com.example.nokiatest.movieapp.model.getMovies
-import com.example.nokiatest.ui.theme.Typography
-import com.example.nokiatest.ui.theme.primaryLight
-import com.example.nokiatest.ui.theme.tertiaryLight
 
 
 @Composable
@@ -96,8 +91,8 @@ fun MiniIconBox( modifier: Modifier = Modifier,
         ){
             Image(
                 painter = painterResource(id = icon),
-                contentDescription = "mini detail icon",
-                modifier = Modifier.size(25.dp, 25.dp),
+                contentDescription = "mini icons detail",
+                modifier = modifier.size(25.dp, 25.dp),
                 alignment = Alignment.Center,
                 contentScale = ContentScale.FillBounds
             )
@@ -130,7 +125,8 @@ fun MovieRow(modifier: Modifier = Modifier,
     }
 
     val changedColor by animateColorAsState(
-        targetValue = if (expanded) tertiaryLight else primaryLight,
+        targetValue = if (expanded) MaterialTheme.colorScheme.tertiary
+        else MaterialTheme.colorScheme.primary,
         label = ""
     )
 
@@ -211,16 +207,19 @@ fun MovieRow(modifier: Modifier = Modifier,
             exit = fadeOut() + shrinkHorizontally { 200 }
         ){
             Column(
-                modifier = Modifier.padding(top = 4.dp, bottom = 8.dp,
-                    start = 8.dp, end = 8.dp)
+                modifier = Modifier
+                    .padding(
+                        top = 4.dp, bottom = 8.dp,
+                        start = 8.dp, end = 8.dp
+                    )
                     .background(color = changedColor),
                 verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.Start
             ) {
                 Text(buildAnnotatedString {
                     withStyle(ParagraphStyle(
-                        textAlign = TextAlign.Start,
-                        textIndent = TextIndent(4.sp, 2.sp),
+                        textAlign = TextAlign.Justify,
+                        textIndent = TextIndent(2.sp, 4.sp),
                         lineHeight = TextUnit(4.0f, TextUnitType(8L)),
                     ), block = {
                         append("- " + movie.plot)
@@ -228,23 +227,21 @@ fun MovieRow(modifier: Modifier = Modifier,
                 },
                     color = Color.White)
 
-                HorizontalDivider(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 8.dp),
-                    thickness = 1.4.dp,
-                    color = Color.LightGray
-                )
-                Row {
+                HorizontalBigDivider()
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
 
                     Icon(painter = painterResource(id = R.drawable.country_icon),
                         contentDescription = null,
-                        modifier = Modifier.padding(horizontal = 4.dp))
+                        modifier = Modifier
+                            .padding(horizontal = 4.dp)
+                            .size(20.dp))
                     Text(
                         buildAnnotatedString {
                             withStyle(
                                 style = SpanStyle(
-                                    fontSize = 15.sp,
+                                    fontSize = 12.sp,
                                     fontWeight = FontWeight.Bold,
                                     shadow = Shadow(Color.DarkGray, blurRadius = 1.0f),
                                     textGeometricTransform =
@@ -259,17 +256,19 @@ fun MovieRow(modifier: Modifier = Modifier,
 
                     Icon(painter = painterResource(id = R.drawable.language_icon),
                         contentDescription = null,
-                        modifier = Modifier.padding(horizontal = 4.dp))
+                        modifier = Modifier
+                            .padding(horizontal = 4.dp)
+                            .size(20.dp)
+                            )
 
                     Text(buildAnnotatedString {
                         withStyle(
                             SpanStyle(
-                                fontSize = 15.sp,
+                                fontSize = 12.sp,
                                 fontWeight = FontWeight.Bold,
                                 shadow = Shadow(Color.DarkGray, blurRadius = 1.0f),
                                 textGeometricTransform =
-                                TextGeometricTransform(1.1f, 0.0f),
-                                baselineShift = BaselineShift.Superscript
+                                TextGeometricTransform(1.1f, 0.0f)
                             )
                         ) {
                             append("Language: ${movie.language}")
@@ -280,7 +279,7 @@ fun MovieRow(modifier: Modifier = Modifier,
         }
 //            Modifier.offset(x = 290.dp, y = (-40).dp)
 //        changes the position of a component being shown,
-    //        but not originally (like buttons!!)
+        //        but not originally (like buttons!!)
     }
 }
 
@@ -325,11 +324,10 @@ fun ScrollableMovieGallery(modifier: Modifier = Modifier,
 fun HorizontalBigDivider(modifier: Modifier = Modifier) {
     HorizontalDivider(
         modifier = modifier
-            .padding(vertical = 8.dp, horizontal = 8.dp)
-            .width(360.dp),
-        thickness = 2.5.dp,
-        color = Color
-            (red = 196, green = 196, blue = 196, alpha = 158)
+            .padding(horizontal = 4.dp, vertical = 8.dp)
+            .fillMaxWidth(),
+        thickness = 2.3.dp,
+        color = MaterialTheme.colorScheme.onPrimary
     )
 }
 
@@ -346,7 +344,7 @@ fun MovieAppTopAppBar(modifier: Modifier = Modifier){
                         .padding(dimensionResource(id = R.dimen.padding_small)))
 
                 Text(text = stringResource(id = R.string.movieApp_name),
-                    style = Typography.displayLarge)
+                    style = MaterialTheme.typography.displayLarge)
             }
         },
         modifier = modifier
