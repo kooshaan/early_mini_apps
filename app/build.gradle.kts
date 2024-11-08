@@ -54,6 +54,8 @@ android {
 }
 
 dependencies {
+    //trying to add EdgeToEdge
+    implementation(libs.androidx.activity.ktx)
     // val nav_version = "2.8.1"
     // Jetpack Compose integration
     implementation(libs.androidx.navigation.compose)
